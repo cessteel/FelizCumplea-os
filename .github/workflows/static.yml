@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños Fabicita 💖</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+    }
+
+    /* Fondo animado */
+    body {
+      background: linear-gradient(270deg, #a8edea, #fed6e3);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Pantalla inicial */
+    #inicio {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      color: #333;
+      padding: 20px;
+    }
+
+    #inicio h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    .btn {
+      background: #ff9a9e;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* Carta */
+    #carta {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      color: #333;
+      padding: 20px;
+      animation: fadeInUp 2s ease;
+    }
+
+    #carta img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: heartbeat 2s infinite;
+    }
+
+    #carta h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    #carta p {
+      max-width: 600px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Responsivo */
+    @media (max-width: 600px) {
+      #carta img {
+        width: 150px;
+        height: 150px;
+      }
+      #carta h2 { font-size: 1.5rem; }
+      #carta p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Pantalla inicial -->
+  <div id="inicio">
+    <h1>🎉 Hoy celebramos a alguien muy especial 🎉</h1>
+    <button class="btn" onclick="mostrarDedicatoria()">✨ Ver dedicatoria ✨</button>
+  </div>
+
+  <!-- Carta -->
+  <div id="carta">
+    <img src="https://via.placeholder.com/300" alt="Foto de Fabiola">
+    <h2>Feliz Cumpleaños, Fabiola 💖</h2>
+    <p>
+      A la mujer más grandiosa del mundo, mi orgullo y mi inspiración.  
+      Que este nuevo año de vida esté lleno de amor, felicidad y logros.  
+      Gracias por ser quien eres, por iluminar mi vida y hacerla especial cada día.  
+      Hoy celebro tu existencia y deseo que todos tus sueños se hagan realidad.  
+      ¡Feliz cumpleaños, mi amor! 🎂✨
+    </p>
+  </div>
+
+  <!-- YouTube oculto -->
+  <div style="display:none;">
+    <iframe id="player" width="560" height="315"
+      src="https://www.youtube.com/embed/d5gf9dXbPi0?enablejsapi=1"
+      frameborder="0" allow="autoplay; encrypted-media"></iframe>
+  </div>
+
+  <script>
+    function mostrarDedicatoria() {
+      document.getElementById("inicio").style.display = "none";
+      document.getElementById("carta").style.display = "flex";
+      // Reproducir video de YouTube
+      var player = document.getElementById("player").contentWindow;
+      player.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+    }
+  </script>
+</body>
+</html>
+
